@@ -2,190 +2,193 @@
 import React,{useState} from 'react';
 import Square from '../Square'
 import List from '../List';
+// Miniatura condivisa già presente negli assets: inclusa nella build, senza URL esterni.
+import filmThumbnail from '../../assets/astroviaje.0.jpg';
 
 
 const array=['1','2','3','4']
 
+// Titoli in minuscolo per la corretta resa del font Avenger; nomi e spazi invariati.
 const item =[
     {
     id:'1',
-    title:'Acqua Ride',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'acqua ride',
+    tumbnail:filmThumbnail,
   },
   { 
     id:'2',
-    title:'Air Barnstorm',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air barnstorm',
+    tumbnail:filmThumbnail,
   },
   {
     id:'3',
-    title:'Air Desertstorm',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air desertstorm',
+    tumbnail:filmThumbnail,
   },
   {
     id:'4',
-    title:'Air Elicottero',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air elicottero',
+    tumbnail:filmThumbnail,
   },
   {
     id:'5',
-    title:'Air Harrier Jet',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air harrier jet',
+    tumbnail:filmThumbnail,
   },
   {
     id:'6',
-    title:'Air Mach6',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air mach6',
+    tumbnail:filmThumbnail,
   },
   {
     id:'7',
-    title:'Air Tornado',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'air tornado',
+    tumbnail:filmThumbnail,
   },
   {
     id:'8',
-    title:'Alton Towers',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'alton towers',
+    tumbnail:filmThumbnail,
   },
   {
     id:'9',
-    title:'Astro Canyon',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'astro canyon',
+    tumbnail:filmThumbnail,
   },
   {
     id:'10',
-    title:'Bob',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'bob',
+    tumbnail:filmThumbnail,
   },
   {
     id:'11',
-    title:'Computer',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'computer',
+    tumbnail:filmThumbnail,
   },
   {
     id:'12',
-    title:'Crash Test',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'crash test',
+    tumbnail:filmThumbnail,
   },
   {
     id:'13',
-    title:'Future City',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'future city',
+    tumbnail:filmThumbnail,
   },
   {
     id:'14',
-    title:'Glacier Run',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'glacier run',
+    tumbnail:filmThumbnail,
   },
   {
     id:'15',
-    title:'Gran Prix F1',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'gran prix f1',
+    tumbnail:filmThumbnail,
   },
   {
     id:'16',
-    title:'Kid Coaster',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'kid coaster',
+    tumbnail:filmThumbnail,
   },
   {
     id:'17',
-    title:'Marte Explorer',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'marte explorer',
+    tumbnail:filmThumbnail,
   },
   {
     id:'18',
-    title:'Montagne Russe',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'montagne russe',
+    tumbnail:filmThumbnail,
   },
   {
     id:'19',
-    title:'Moto Fogarty',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'moto fogarty',
+    tumbnail:filmThumbnail,
   },
   {
     id:'20',
-    title:'Moto Valentino',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'moto valentino',
+    tumbnail:filmThumbnail,
   },
   {
     id:'21',
-    title:'Moto Yamaha',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'moto yamaha',
+    tumbnail:filmThumbnail,
   },
   {
     id:'22',
-    title:'Race Way',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'race way',
+    tumbnail:filmThumbnail,
   },
   {
     id:'23',
-    title:'Rally Cosworth',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rally cosworth',
+    tumbnail:filmThumbnail,
   },
   {
     id:'24',
-    title:'Rally Delta',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rally delta',
+    tumbnail:filmThumbnail,
   },
   {
     id:'25',
-    title:'Rally Impreza',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rally impreza',
+    tumbnail:filmThumbnail,
   },
   {
     id:'26',
-    title:'Rally Portugal',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rally portugal',
+    tumbnail:filmThumbnail,
   },
   {
     id:'27',
-    title:'Rally Punto',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rally punto',
+    tumbnail:filmThumbnail,
   },
   {
     id:'28',
-    title:'RGB Space Adventure',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'rgb space adventure',
+    tumbnail:filmThumbnail,
   },
   {
     id:'29',
-    title:'Roller Coaster',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'roller coaster',
+    tumbnail:filmThumbnail,
   },
   {
     id:'30',
-    title:'Sci',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'sci',
+    tumbnail:filmThumbnail,
   },
   {
     id:'31',
-    title:'Slot Car Boogie',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'slot car boogie',
+    tumbnail:filmThumbnail,
   },
   {
     id:'32',
-    title:'Superstition',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'superstition',
+    tumbnail:filmThumbnail,
   },
   {
     id:'33',
-    title:'Time Machine',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'time machine',
+    tumbnail:filmThumbnail,
   },
   {
     id:'34',
-    title:'Viaggio in Egitto',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'viaggio in egitto',
+    tumbnail:filmThumbnail,
   },
   {
     id:'35',
-    title:'Visions',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'visions',
+    tumbnail:filmThumbnail,
   },
   {
     id:'36',
-    title:'Volcano Mine',
-    tumbnail:'https://www.nwave.com/wp-content/uploads/2015/10/ASTRO1.jpg',
+    title:'volcano mine',
+    tumbnail:filmThumbnail,
   },
   
   ]
@@ -196,17 +199,19 @@ const item =[
       const [max,setMax]=useState(10)
 
     return (
-        <div>
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center', flexDirection:'row', marginBottom:'30px'}}>
+        /* Il catalogo e la navigazione si adattano anche agli schermi stretti. */
+        <div className='film-catalog'>
+        <div className='film-pagination' style={{display:'flex',justifyContent:'center',alignItems:'center', flexDirection:'row', marginBottom:'30px'}}>
        
-        <button style={{backgroundColor:'white',width:'180px', height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
-        margin:'35px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px darkred'}} onClick={() => {setPage(focusedPage > 1 ? focusedPage - 1 : 4); setMin(min>0 ? min - 10 : 30); setMax(max>10? max-10 : 40)}}
+        <button className='page-button' style={{backgroundColor:'white',width:'180px', height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
+        margin:'35px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px var(--interactive-shadow)'}} onClick={() => {setPage(focusedPage > 1 ? focusedPage - 1 : 4); setMin(min>0 ? min - 10 : 30); setMax(max>10? max-10 : 40)}}
         >
         <div style={{transform: 'skewX(16deg)',justifyContent:'center', marginTop:'7px'}}>...back </div>
       </button>
-            {array.map((id=array.indexOf(focusedPage-1))=> id == focusedPage ? <Square active focusedPage={focusedPage}/> : <Square/>  )}
-            <button style={{backgroundColor:'white',width:'175px',height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
-        margin:'25px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px darkred'}} 
+            {/* Chiavi stabili per gli indicatori delle pagine. */}
+            {array.map((id)=> id == focusedPage ? <Square key={id} active focusedPage={focusedPage}/> : <Square key={id}/>)}
+            <button className='page-button' style={{backgroundColor:'white',width:'175px',height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
+        margin:'25px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px var(--interactive-shadow)'}}
                     onClick={() => {setPage(focusedPage < 4 ? focusedPage + 1 : 1); setMin(min<30 ? min + 10 : 0); setMax(max<40 ? max+10 : 10)} }>
           <div style={{transform: 'skewX(16deg)', marginTop:'7px' }}>next...</div>
         

@@ -8,11 +8,13 @@ import SpaceLine from './components/Spacer/SpaceLine';
 
 function App() {
   return (
-    <div style={{backgroundColor:'#e90003',display:'flex',flexDirection:'column',alignItems:'center',width:'755px',maxHeight:'2600px'}}>
+    /* Contenitore fluido: occupa lo schermo senza superare la larghezza originale. */
+    <div className='vector-app' style={{backgroundColor:'var(--eva-purple)',display:'flex',flexDirection:'column',alignItems:'center',width:'100%',maxWidth:'755px',margin:'0 auto'}}>
       <Header/>
       <Bookmark/>
       <div style={{display:'flex',justifyContent:'center', width:'100%', marginTop:'30px',flexDirection:'column',marginRight:'10px'}}>
-      <SpaceLine  size='30px' color='white' borderColor='black'/>
+      {/* Fascia di chiusura alta; i separatori delle righe non usano questa variante. */}
+      <SpaceLine variant='brand' color='white' borderColor='black'/>
       </div>
 </div>
   );
