@@ -45,7 +45,8 @@ export default function Preview({onClose,id,title}) {
                 <div className='preview-header-line' aria-hidden='true'>
                     <SpaceLine size='15px' color='white' borderColor='black'/>
                 </div>
-                <button ref={closeButton} type='button' aria-label='Chiudi anteprima' onClick={onClose} style={{backgroundColor:'white',width:'69px', height:'40px',border:'solid',borderWidth:'2px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',margin:'20px',marginRight:'25px',fontFamily:'avenger',fontSize:'25px',justifyContent:'center',boxShadow:'3px 3px var(--interactive-shadow)'}}>
+                {/* Ombra verde scuro dedicata alla X, coordinata con il fondo Kawasaki. */}
+                <button ref={closeButton} type='button' aria-label='Chiudi anteprima' onClick={onClose} style={{backgroundColor:'white',width:'69px', height:'40px',border:'solid',borderWidth:'2px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',margin:'20px',marginRight:'25px',fontFamily:'avenger',fontSize:'25px',justifyContent:'center',boxShadow:'3px 3px #336600'}}>
                     <div style={{transform: 'skewX(16deg)', marginTop:'2px'}}> ✖︎
                     </div>
                 </button>
