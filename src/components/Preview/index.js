@@ -35,8 +35,8 @@ export default function Preview({onClose,id,title}) {
     return createPortal(
     <div className='film-preview-backdrop' onClick={event => {event.stopPropagation(); onClose()}}>
 
-    {/* Anteprima senza alone bianco; i click interni non la chiudono. */}
-    <div className='film-preview' onClick={event => event.stopPropagation()} role='dialog' aria-modal='true' aria-label={title} style={{display:'flex',zIndex:1000,position:'absolute', backgroundColor:'var(--eva-purple)',flexDirection:'column',alignItems:'center',height:'490px',border:'solid',borderWidth:'6px', borderRadius:'10px',justifyContent:'center',width:'530px'}}>
+    {/* Sfondo verde Kawasaki uniforme; la patina esterna resta viola. */}
+    <div className='film-preview' onClick={event => event.stopPropagation()} role='dialog' aria-modal='true' aria-label={title} style={{display:'flex',zIndex:1000,position:'absolute', backgroundColor:'var(--kawasaki-green)',flexDirection:'column',alignItems:'center',height:'490px',border:'solid',borderWidth:'6px', borderRadius:'10px',justifyContent:'center',width:'530px'}}>
             {/* Logo del simulatore centrato; il titolo sotto identifica il filmato aperto. */}
             <img className='preview-brand-logo' src={vectorLogo} alt='Vector GX-01 — Simulation Frame Unit'/>
             <div className='film-preview-header' style={{display:'flex',width:'100%',marginLeft:'25px',flexDirection:'row',justifyContent:'space-between'}}>
@@ -50,7 +50,7 @@ export default function Preview({onClose,id,title}) {
                     </div>
                 </button>
             </div>
-            <div style={{display:'flex',backgroundColor:'green',flex:1,height:'90%',width:'90%',borderWidth:'2px',borderColor:'black',border:'solid',marginBottom:'10px'}}>
+            <div style={{display:'flex',backgroundColor:'var(--kawasaki-green)',flex:1,height:'90%',width:'90%',borderWidth:'2px',borderColor:'black',border:'solid',marginBottom:'10px'}}>
                 <img style={{height:'100%',width:'100%',}} src='https://c.tenor.com/LNHAv74lhqgAAAAM/ma-io-che-ne-so-ma-io-che-ne-so-meme.gif' alt='apudodo'></img>
             </div>
     </div>
