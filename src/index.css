@@ -35,14 +35,23 @@ body { background: var(--eva-purple); }
 .film-pagination .page-button { width: clamp(84px, 24vw, 175px) !important; height: 56px !important; margin: 10px 4px !important; font-size: clamp(22px, 4.8vw, 38px) !important; flex-shrink: 0; }
 .film-pagination > div { flex-shrink: 0; }
 .film-line { width: 100% !important; height: auto !important; min-height: 110px; padding: 5px 0 !important; margin-bottom: 14px !important; }
-.film-card { width: 100% !important; height: auto !important; min-height: 110px; margin-bottom: 0 !important; align-items: center !important; padding: 8px !important; gap: 6px; }
+.film-card { width: 100% !important; height: auto !important; min-height: 110px; margin-bottom: 0 !important; align-items: center !important; padding: 8px !important; gap: 3px; --film-line-height: 15px; }
 .film-title { min-width: 0; height: auto !important; flex: 1 1 auto; }
 .film-title > :first-child h1 { flex-shrink: 0; font-size: clamp(24px, 4.5vw, 35px) !important; }
 .film-title > :last-child h1 { min-width: 0; overflow-wrap: anywhere; font-size: clamp(25px, 5vw, 40px) !important; line-height: 1.15; }
 .film-decoration { min-width: 0; flex: 0.4 !important; }
+/* Altezza condivisa tra separatore e trattini esterni; margini laterali uniformi. */
+.film-decoration > div > div {
+  height: var(--film-line-height) !important;
+}
+.film-thumbnail .thumbnail-accents > div { margin: 0 1px !important; }
+.film-thumbnail > .thumbnail-accents:first-child > div:first-child,
+.film-thumbnail > .thumbnail-accents:last-child > div:last-child {
+  height: var(--film-line-height) !important;
+}
 .film-thumbnail { width: clamp(105px, 29vw, 230px) !important; flex: 0 0 clamp(105px, 29vw, 230px); min-width: 0; }
 .film-thumbnail > div { min-width: 0; }
-.film-thumbnail > div:nth-child(2) { --thumbnail-frame-height: 80px; width: 70% !important; flex: 0 0 70%; }
+.film-thumbnail > div:nth-child(2) { --thumbnail-frame-height: 80px; margin-left: 0 !important; width: 70% !important; flex: 0 0 70%; }
 /* Margine minimo di 5 px dagli angoli interni: il calcolo sottrae
    lo spostamento orizzontale prodotto dallo skew di 16 gradi (tan = 0.286745).
    Eliminando il bordo interno da 3 px, lo spazio recuperato va all’immagine. */
@@ -84,12 +93,13 @@ body { background: var(--eva-purple); }
   .film-title { flex: 0 1 auto; }
   .film-decoration { display: flex; flex: 1 0 36px !important; margin-bottom: 0 !important; align-self: center; }
   .film-decoration > div { width: 100%; margin: 0 !important; }
-  .film-decoration > div > div { height: 10px !important; margin-left: 1px !important; margin-right: 1px !important; border: 0 !important; }
+  .film-decoration > div > div { height: var(--film-line-height) !important; margin-left: 1px !important; margin-right: 1px !important; border: 0 !important; }
   .film-decoration > div > div:nth-child(1),
   .film-decoration > div > div:nth-child(2),
   .film-decoration > div > div:nth-child(8),
   .film-decoration > div > div:nth-child(9) { display: none !important; }
-  .film-card { min-height: 98px; }
+  /* Spazi più stretti e proporzioni condivise anche sul telefono. */
+  .film-card { min-height: 98px; --film-line-height: 10px; }
   /* Su mobile riserva 12 px per lato ai trattini, mantenendo la larghezza della cornice. */
   .film-thumbnail {
     height: 80px !important;
@@ -102,10 +112,10 @@ body { background: var(--eva-purple); }
     width: 12px;
     margin: 0 !important;
   }
-  .film-thumbnail .thumbnail-accents > div { margin: 0 1px !important; border: 0 !important; }
+  .film-thumbnail .thumbnail-accents > div { border: 0 !important; }
   .film-thumbnail .thumbnail-accents > div:nth-child(2) { height: 21px !important; }
   .film-thumbnail > .thumbnail-accents:first-child > div:first-child,
-  .film-thumbnail > .thumbnail-accents:last-child > div:last-child { height: 9px !important; }
+  .film-thumbnail > .thumbnail-accents:last-child > div:last-child { height: var(--film-line-height) !important; }
   .film-thumbnail > .thumbnail-accents:first-child > div:last-child,
   .film-thumbnail > .thumbnail-accents:last-child > div:first-child { height: 33px !important; }
   .film-thumbnail > div:nth-child(2) { --thumbnail-frame-height: 65px; width: calc(100% - 24px) !important; flex-basis: calc(100% - 24px); height: 65px !important; margin-left: 0 !important; }
