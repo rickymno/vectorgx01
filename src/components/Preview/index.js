@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react'
 import {createPortal} from 'react-dom'
 import Title from '../Title'
 import SpaceLine from '../Spacer/SpaceLine'
+import vectorLogo from '../../assets/vector_gx01_logo.png'
 
 
 
@@ -36,6 +37,8 @@ export default function Preview({onClose,id,title}) {
 
     {/* Anteprima senza alone bianco; i click interni non la chiudono. */}
     <div className='film-preview' onClick={event => event.stopPropagation()} role='dialog' aria-modal='true' aria-label={title} style={{display:'flex',zIndex:1000,position:'absolute', backgroundColor:'var(--eva-purple)',flexDirection:'column',alignItems:'center',height:'490px',border:'solid',borderWidth:'6px', borderRadius:'10px',justifyContent:'center',width:'530px'}}>
+            {/* Logo del simulatore centrato; il titolo sotto identifica il filmato aperto. */}
+            <img className='preview-brand-logo' src={vectorLogo} alt='Vector GX-01 — Simulation Frame Unit'/>
             <div className='film-preview-header' style={{display:'flex',width:'100%',marginLeft:'25px',flexDirection:'row',justifyContent:'space-between'}}>
                 <Title id={id} title={title}/>
                 {/* Separatore decorativo tra titolo e X, sopra il contenuto dell'anteprima. */}

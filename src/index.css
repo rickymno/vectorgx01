@@ -78,7 +78,7 @@ body { background: var(--eva-purple); }
   backdrop-filter: blur(6px);
 }
 .film-preview { position: relative !important; top: auto; left: auto; transform: none; width: min(530px, calc(100vw - 28px)) !important; height: min(490px, calc(100dvh - 32px)) !important; }
-.film-preview > div:first-child { width: 100% !important; margin-left: 0 !important; padding-left: 10px; align-items: center; }
+.film-preview > .film-preview-header { width: 100% !important; margin-left: 0 !important; padding-left: 10px; align-items: center; }
 .film-preview button { flex-shrink: 0; margin: 10px !important; }
 .film-preview > div:last-child { min-height: 0; }
 .film-preview img { object-fit: contain; }
@@ -239,4 +239,15 @@ body { background: var(--eva-purple); }
 /* Rispetta la preferenza del dispositivo per il movimento ridotto. */
 @media (prefers-reduced-motion: reduce) {
   .space-line-moving .brand-gear-track { animation: none; }
+}
+
+/* Logo proporzionato alla finestra, con spazio riservato per titolo e filmato. */
+.film-preview > .preview-brand-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: min(210px, 62%);
+  height: auto;
+  max-height: 70px;
+  margin: 12px auto 0;
+  object-fit: contain;
 }
