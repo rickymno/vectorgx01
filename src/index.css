@@ -208,3 +208,29 @@ body { background: var(--eva-purple); }
   .preview-header-line > div > div:nth-child(8),
   .preview-header-line > div > div:nth-child(9) { display: none; }
 }
+
+/* Scorrimento direzionale dei soli trattini laterali; il centro sostiene sempre il logo. */
+.space-line-moving { --line-travel: 18px; }
+.space-line-moving[data-direction='back'] { --line-travel: -18px; }
+.space-line-moving > div:not(:nth-child(5)) {
+  animation: brand-stripe-slide 460ms ease-in-out both;
+  animation-delay: var(--stripe-delay, 0ms);
+}
+.space-line-moving > div:nth-child(1) { --stripe-delay: 0ms; }
+.space-line-moving > div:nth-child(2) { --stripe-delay: 25ms; }
+.space-line-moving > div:nth-child(3) { --stripe-delay: 50ms; }
+.space-line-moving > div:nth-child(4) { --stripe-delay: 75ms; }
+.space-line-moving > div:nth-child(6) { --stripe-delay: 100ms; }
+.space-line-moving > div:nth-child(7) { --stripe-delay: 125ms; }
+.space-line-moving > div:nth-child(8) { --stripe-delay: 150ms; }
+.space-line-moving > div:nth-child(9) { --stripe-delay: 175ms; }
+.space-line-moving[data-direction='back'] > div { animation-delay: calc(175ms - var(--stripe-delay, 0ms)); }
+@keyframes brand-stripe-slide {
+  0%, 100% { transform: translateX(0) skewX(-16deg); }
+  45% { transform: translateX(var(--line-travel)) skewX(-16deg); opacity: 0; }
+  46% { transform: translateX(calc(-1 * var(--line-travel))) skewX(-16deg); opacity: 0; }
+}
+/* Rispetta la preferenza del dispositivo per il movimento ridotto. */
+@media (prefers-reduced-motion: reduce) {
+  .space-line-moving > div:not(:nth-child(5)) { animation: none; }
+}

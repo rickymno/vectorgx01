@@ -2,11 +2,13 @@ import React from 'react'
 import Spacer from '../../Spacer'
 
 // La variante brand è riservata alle fasce esterne; senza variante resta la linea originale.
-export default function SpaceLine({size,color,borderColor,variant = 'default'}) {
+export default function SpaceLine({size,color,borderColor,variant = 'default',animation = false,direction = 'next',animationKey = 0}) {
     const isBrand = variant === 'brand'
+    // animation è opzionale: lista, anteprima e fascia inferiore restano statiche.
+    const className = [isBrand && 'space-line-brand', animation && animationKey > 0 && 'space-line-moving'].filter(Boolean).join(' ') || undefined
     const lineSize = size || (isBrand ? 'clamp(52px, 9vw, 76px)' : undefined)
     return (
-        <div className={isBrand ? 'space-line-brand' : undefined} style={{display:'flex',flex:1,flexDirection:'row',alignItems:'center',marginTop:isBrand ? 0 : '10px',marginBottom:isBrand ? 0 : '10px',marginLeft:'10px'}}>
+        <div key={animation ? animationKey : 'static'} className={className} data-direction={animation ? direction : undefined} style={{display:'flex',flex:1,flexDirection:'row',alignItems:'center',marginTop:isBrand ? 0 : '10px',marginBottom:isBrand ? 0 : '10px',marginLeft:'10px'}}>
             <Spacer size={lineSize} color={color} borderColor={borderColor} flex={0.029} opacity='50%'/>
             <Spacer size={lineSize} color={color} borderColor={borderColor} flex={0.05} opacity='70%'/>
             <Spacer size={lineSize} color={color} borderColor={borderColor} flex={0.08} opacity='80%'/>
