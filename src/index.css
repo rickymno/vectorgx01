@@ -63,7 +63,8 @@ body { background: var(--eva-purple); }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(111, 63, 166, 0.62);
+  /* Patina più trasparente, mantenendo la sfocatura effetto vetro. */
+  background: rgba(111, 63, 166, 0.35);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
