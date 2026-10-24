@@ -1,27 +1,32 @@
-import {useState} from 'react';
+import films from './data/films';
+import useFilmCatalog from './hooks/useFilmCatalog';
 import Header from './components/Header';
-import Bookmark from './components/Bookmark';
+import FilmCatalog from './components/FilmCatalog';
+import Preview from './components/Preview';
 import SpaceLine from './components/Spacer/SpaceLine';
 
+// App collega la logica ai componenti; non calcola pagine e non contiene dati dei filmati.
+export default function App() {
+  const catalog = useFilmCatalog(films);
 
-//creare il componente BOTTONE con tanto di icone fighe e aggiungere il logo nell header
-//necessario refactor di spacer con le props WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)' per una maggiore pulizia del componente andra eliminato arrowL e arrowR e richiamato semplicemente l elemento filler con il margine adeguato e un flex fisso per i piu piccoli e via via piu grande man mano che ci si avvicina al centro
-
-function App() {
-  // Un contatore riavvia la fascia anche con più click nella stessa direzione.
-  const [lineMotion, setLineMotion] = useState({id: 0, direction: 'next'});
-  const animatePageChange = direction => setLineMotion(previous => ({id: previous.id + 1, direction}));
   return (
-    /* Contenitore fluido: occupa lo schermo senza superare la larghezza originale. */
-    <div className='vector-app' style={{backgroundColor:'var(--eva-purple)',display:'flex',flexDirection:'column',alignItems:'center',width:'100%',maxWidth:'755px',margin:'0 auto'}}>
-      <Header lineMotion={lineMotion}/>
-      <Bookmark onPageChange={animatePageChange}/>
-      <div style={{display:'flex',justifyContent:'center', width:'100%', marginTop:'30px',flexDirection:'column',marginRight:'10px'}}>
-      {/* Fascia di chiusura alta; i separatori delle righe non usano questa variante. */}
-      <SpaceLine variant='brand' color='white' borderColor='black'/>
+    <div className='vector-app'>
+      <Header lineMotion={catalog.lineMotion}/>
+      <FilmCatalog
+        films={catalog.visibleFilms}
+        currentPage={catalog.currentPage}
+        pageCount={catalog.pageCount}
+        onNext={catalog.showNextPage}
+        onPrevious={catalog.showPreviousPage}
+        onFilmSelect={catalog.openPreview}
+      />
+      <div className='catalog-footer'>
+        <SpaceLine variant='brand' color='white' borderColor='black'/>
       </div>
-</div>
+      {/* Un'unica anteprima aperta per tutto il catalogo. */}
+      {catalog.selectedFilm && (
+        <Preview film={catalog.selectedFilm} onClose={catalog.closePreview}/>
+      )}
+    </div>
   );
 }
-
-export default App;
