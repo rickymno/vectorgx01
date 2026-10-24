@@ -194,3 +194,17 @@ body { background: var(--eva-purple); }
     margin-right: 1px !important;
   }
 }
+
+/* Linea nella sola intestazione del dialogo: si adatta tra titolo e chiusura. */
+.film-preview-header { gap: 3px; }
+.film-preview-header > .film-title { flex: 0 1 auto; }
+.preview-header-line { display: flex; flex: 1 0 36px; min-width: 36px; }
+.preview-header-line > div { width: 100%; margin: 0 !important; }
+.preview-header-line > div > div { margin: 0 1px !important; }
+@media (max-width: 520px) {
+  .preview-header-line > div > div { height: 10px !important; border: 0 !important; }
+  .preview-header-line > div > div:nth-child(1),
+  .preview-header-line > div > div:nth-child(2),
+  .preview-header-line > div > div:nth-child(8),
+  .preview-header-line > div > div:nth-child(9) { display: none; }
+}
