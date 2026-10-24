@@ -6,13 +6,14 @@ export default function Pagination({currentPage, pageCount, onNext, onPrevious})
 
   return (
     <div className='film-pagination'>
-      <button className='page-button' type='button' onClick={onPrevious}>
+      {/* Con zero o una pagina i comandi restano visibili ma non sono attivabili. */}
+      <button className='page-button' type='button' onClick={onPrevious} disabled={pageCount <= 1}>
         <div className='page-button-label'>...back</div>
       </button>
       {pages.map(page => (
         <PageIndicator key={page} active={page === currentPage} page={page}/>
       ))}
-      <button className='page-button' type='button' onClick={onNext}>
+      <button className='page-button' type='button' onClick={onNext} disabled={pageCount <= 1}>
         <div className='page-button-label'>next...</div>
       </button>
     </div>

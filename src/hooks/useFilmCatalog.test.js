@@ -39,4 +39,22 @@ test('il catalogo vuoto rimane su una pagina valida senza elementi', () => {
   fireEvent.click(screen.getByText('indietro'));
   expect(screen.getByLabelText('pagina')).toHaveTextContent('1');
   expect(screen.getByLabelText('filmati visibili').textContent).toBe('');
+  expect(screen.getByLabelText('cambi pagina')).toHaveTextContent('0');
+});
+
+test('ricalcola le pagine quando l’array cresce o si accorcia', () => {
+  const films = Array.from({length: 21}, (_, index) => ({id: index + 1, title: `film-${index + 1}`}));
+  const {rerender} = render(<CatalogHarness films={films}/>);
+  fireEvent.click(screen.getByText('indietro'));
+  expect(screen.getByLabelText('pagina')).toHaveTextContent('3');
+  rerender(<CatalogHarness films={films.slice(0, 11)}/>);
+  expect(screen.getByLabelText('pagina')).toHaveTextContent('2');
+  expect(screen.getByLabelText('filmati visibili').textContent).toBe('film-11');
+  rerender(<CatalogHarness films={films}/>);
+  expect(screen.getByLabelText('pagina')).toHaveTextContent('2');
+  fireEvent.click(screen.getByText('avanti'));
+  expect(screen.getByLabelText('filmati visibili').textContent).toBe('film-21');
+  rerender(<CatalogHarness films={[]}/>);
+  expect(screen.getByLabelText('pagina')).toHaveTextContent('1');
+  expect(screen.getByLabelText('filmati visibili').textContent).toBe('');
 });

@@ -2,7 +2,7 @@ import React from 'react'
 import Spacer from '../../Spacer'
 
 // La variante brand è riservata alle fasce esterne; senza variante resta la linea originale.
-export default function SpaceLine({size,color,borderColor,variant = 'default',animation = false,direction = 'next',animationKey = 0}) {
+export default function SpaceLine({size,color,borderColor = 'black',variant = 'default',animation = false,direction = 'next',animationKey = 0}) {
     const isBrand = variant === 'brand'
     // animation è opzionale: lista, anteprima e fascia inferiore restano statiche.
     const geared = animation && isBrand
@@ -15,7 +15,10 @@ export default function SpaceLine({size,color,borderColor,variant = 'default',an
         return <div className='brand-gear-window' style={{height: lineSize}} aria-hidden='true'>
             <div className='brand-gear-track'>
                 {[0, 1, 2].map(turn => <div className='brand-gear-turn' key={turn}>
-                    {widths.map((width, index) => <span key={index} style={{flex: width / 0.309, backgroundColor: color, opacity: opacities[index], borderColor: borderColor || 'transparent'}} />)}
+                    {widths.map((width, index) => <span key={index} style={{flex: width / 0.309, borderColor}}>
+                        {/* L’opacità riguarda solo il bianco, non il contorno del dente. */}
+                        <span className='brand-gear-fill' style={{backgroundColor: color, opacity: opacities[index]}}/>
+                    </span>)}
                 </div>)}
             </div>
         </div>
