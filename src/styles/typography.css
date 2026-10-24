@@ -1,0 +1,28 @@
+/* Il bordo viene disegnato prima del riempimento, per conservare i dettagli del font. */
+.outlined-text {
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  paint-order: stroke fill;
+}
+
+/* Numeri e comandi neri: contorno bianco più sottile rispetto ai titoli. */
+.pagination-number,
+.page-button-label,
+.preview-close-label {
+  --text-outline-color: #fff;
+  -webkit-text-stroke: 0.8px var(--text-outline-color);
+  paint-order: stroke fill;
+}
+
+/* Ripiego per i browser che non supportano il contorno dei caratteri. */
+@supports not (-webkit-text-stroke: 1px black) {
+  .outlined-text,
+  .pagination-number,
+  .page-button-label,
+  .preview-close-label {
+    text-shadow:
+      -0.7px -0.7px 0 var(--text-outline-color),
+       0.7px -0.7px 0 var(--text-outline-color),
+      -0.7px  0.7px 0 var(--text-outline-color),
+       0.7px  0.7px 0 var(--text-outline-color);
+  }
+}

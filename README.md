@@ -8,6 +8,7 @@ Webapp React per sfogliare il catalogo e aprire le anteprime del simulatore.
 - `src/hooks/useFilmCatalog.js`: pagina corrente, selezione del filmato e direzione della fascia animata.
 - `src/hooks/usePreviewDialog.js`: focus, Escape e blocco dello scorrimento quando l'anteprima è aperta.
 - `src/components/`: struttura visiva. FilmCatalog combina Pagination e FilmList; ogni FilmRow visualizza una FilmCard. Preview riceve il filmato selezionato.
+- `src/styles/typography.css`: contorni neri sul testo bianco e bianchi sul testo scuro.
 - `src/styles/components.css`: aspetto di base dei componenti, estratto dagli stili inline.
 - `src/index.css`: palette, font, layout responsive e animazioni esistenti.
 
