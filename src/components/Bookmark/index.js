@@ -193,7 +193,7 @@ const item =[
   
   ]
   
-  export default function Bookmark() {
+  export default function Bookmark({onPageChange}) {
       const [focusedPage, setPage] = useState(1)
       const [min,setMin]=useState(0)
       const [max,setMax]=useState(10)
@@ -204,7 +204,7 @@ const item =[
         <div className='film-pagination' style={{display:'flex',justifyContent:'center',alignItems:'center', flexDirection:'row', marginBottom:'30px'}}>
        
         <button className='page-button' style={{backgroundColor:'white',width:'180px', height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
-        margin:'35px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px var(--interactive-shadow)'}} onClick={() => {setPage(focusedPage > 1 ? focusedPage - 1 : 4); setMin(min>0 ? min - 10 : 30); setMax(max>10? max-10 : 40)}}
+        margin:'35px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px var(--interactive-shadow)'}} onClick={() => {onPageChange?.('back'); setPage(focusedPage > 1 ? focusedPage - 1 : 4); setMin(min>0 ? min - 10 : 30); setMax(max>10? max-10 : 40)}}
         >
         <div style={{transform: 'skewX(16deg)',justifyContent:'center', marginTop:'7px'}}>...back </div>
       </button>
@@ -212,7 +212,7 @@ const item =[
             {array.map((id)=> id == focusedPage ? <Square key={id} active focusedPage={focusedPage}/> : <Square key={id}/>)}
             <button className='page-button' style={{backgroundColor:'white',width:'175px',height:'65px',border:'solid',borderWidth:'4px',borderColor:'black',WebkitTransform:'-moz-initial',transform: 'skewX(-16deg)',
         margin:'25px',fontFamily:'avenger',fontSize:'40px',justifyContent:'center',boxShadow:'8px 8px 3px var(--interactive-shadow)'}}
-                    onClick={() => {setPage(focusedPage < 4 ? focusedPage + 1 : 1); setMin(min<30 ? min + 10 : 0); setMax(max<40 ? max+10 : 10)} }>
+                    onClick={() => {onPageChange?.('next'); setPage(focusedPage < 4 ? focusedPage + 1 : 1); setMin(min<30 ? min + 10 : 0); setMax(max<40 ? max+10 : 10)} }>
           <div style={{transform: 'skewX(16deg)', marginTop:'7px' }}>next...</div>
         
       </button>
