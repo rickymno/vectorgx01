@@ -1,6 +1,7 @@
-export default function Text({text, size, margin, color}) {
+export default function Text({text, size, margin, color, outlineColor: customOutlineColor}) {
   // Contorno scuro sul bianco, chiaro sul testo nero o viola; la regola grafica è nel CSS.
-  const outlineColor = color === 'white' ? '#000' : '#fff';
+  // I numeri possono scegliere il viola Eva 01 senza cambiare gli altri testi.
+  const outlineColor = customOutlineColor ?? (color === 'white' ? '#000' : '#fff');
 
   return (
     <div>
