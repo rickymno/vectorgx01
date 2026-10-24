@@ -55,7 +55,20 @@ body { background: var(--eva-purple); }
   object-fit: cover;
 }
 .film-placeholder, .film-placeholder > div { width: 100% !important; }
-.film-preview { position: fixed !important; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(530px, calc(100vw - 28px)) !important; height: min(490px, calc(100dvh - 32px)) !important; }
+/* Patina EVA-01 a tutto schermo: sfuma la lista e intercetta i click sullo sfondo. */
+.film-preview-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Patina più trasparente, mantenendo la sfocatura effetto vetro. */
+  background: rgba(111, 63, 166, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.film-preview { position: relative !important; top: auto; left: auto; transform: none; width: min(530px, calc(100vw - 28px)) !important; height: min(490px, calc(100dvh - 32px)) !important; }
 .film-preview > div:first-child { width: 100% !important; margin-left: 0 !important; padding-left: 10px; align-items: center; }
 .film-preview button { flex-shrink: 0; margin: 10px !important; }
 .film-preview > div:last-child { min-height: 0; }
